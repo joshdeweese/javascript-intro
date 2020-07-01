@@ -1,11 +1,10 @@
-# Notes from [*Introduction to programming with JavaScript*](https://launchschool.com/books/javascript) by Launch School
+## Notes from [*Introduction to programming with JavaScript*](https://launchschool.com/books/javascript) by Launch School
 
 &nbsp;
 
-## ***The Basics***
----
-#### [Link to exercises](https://github.com/joshdeweese/javascript_intro/tree/master/01_the_basics)
-### **Vocabulary**
+### ***The Basics***
+##### [Link to exercises](https://github.com/joshdeweese/javascript_intro/tree/master/01_the_basics)
+#### **Vocabulary**
 |term |definition |
 | --- | --- |
 |primitive data type        |string, number, null, undefined, boolean |
@@ -32,7 +31,7 @@
 |REPL |read evaluate print loop |
 
 
-### **Notes**
+#### **Notes**
 *More on what undefined means:*
 ```
 > console.log("Hello, world!")
@@ -96,10 +95,9 @@ The above example shows that the console.log function doesn't return a value, it
 
 &nbsp;
 
-## ***Variables***
----
-#### [Link to exercises](https://github.com/joshdeweese/javascript_intro/tree/master/02_variables)
-### **Vocabulary**
+### ***Variables***
+##### [Link to exercises](https://github.com/joshdeweese/javascript_intro/tree/master/02_variables)
+#### **Vocabulary**
 |term |definition |
 | --- | --- |
 |variable       |container to hold information; labels and stores data in memory |
@@ -108,7 +106,7 @@ The above example shows that the console.log function doesn't return a value, it
 |scope  |determines where a variable is available in a program; the location where the variable is declared determines the scope; variables declared with let or const have **block** scope; the braces that surround a function definition are not normally considered to be blocks |
 
 
-### **Notes**
+#### **Notes**
 >*To declare a variable:*
 ```
 > let foo
@@ -145,13 +143,224 @@ b retained the original value of a. Variables reference values in memory that ar
 
 
 &nbsp;
-
-## ***Input/Output***
----
-#### [Link to exercises](https://github.com/joshdeweese/javascript_intro/tree/master/03_Input_Output)
-### **Vocabulary**
+### ***Input/Output***
+##### [Link to exercises](https://github.com/joshdeweese/javascript_intro/tree/master/03_Input_Output)
+#### **Vocabulary**
 |term |definition |
 | --- | --- |
-|variable       |container to hold information; labels and stores data in memory |
+|readline       |a Node.js API that lets JS programs read input from the command line|
 
-### **Notes**
+#### **Notes**
+>the require function:
+```
+let rlSync = require('readline-sync');
+let name = rlSync.question("What is your name?\n")
+
+/ In broswer:
+let name = prompt("What's your name?");
+console.log(`Good morning, ${name}.`)
+```
+The built in require function imports a package into the program. It returns the library of an object, which can then be 
+assigned to a variable. NOTE: question returns a string, so if we need them to be returned as numbers, 
+use the Number() function.
+
+&nbsp;
+### ***Functions***
+##### [Link to exercises](https://github.com/joshdeweese/javascript_intro/tree/master/04_Functions)
+#### **Vocabulary**
+|term |definition |
+| --- | --- |
+|function       |a procedure that allows the user to extract code and run it as a separate unit|
+|reserved keyword |a word in a programming language that has a special use|
+|argument |optional values provided to a function|
+|pass |to supply a function with an argument|
+|initialize |to assign an initial value to a data object or variable|
+|invoke |same as "call": to create a function|
+|parameter |placeholder; the local variable name between the () in a function|
+|argument |value; the value you pass into the function for the parameter |
+|return value |a function output |
+|default parameter |optional parameter for when user doesn't provide one; ex: function fname(words = 'hello') {|
+|variable scope |where a variable is accessible in a program; denoted with camelCase style |
+|global variable |available throughout a program; usually denoted in this style: INTEREST_RATE |
+|local variable |confined to a function; short-lived: they go away when the function stops running |
+|method invocation |'xyxyx'.toUpperCase()|
+|mutate the caller |a method that permanently alters the object that invokes it; e.g. .pop() |
+|non-destructive array function|mutates the copy; the original stays the same, but creates a copy of it and modifies |
+|function composition |use a function call as an argument in another function |
+|three ways to define a function|function declaration, function expression, arrow function|
+|implicit return |an arrow function does not require the return statment if there is only one expression|
+
+
+#### **Notes**
+*When JavaScript encounters the return statment, it evaluates the expression, stops running, and returns the expression's
+value*
+
+*Global variables can be useful in some application-wide configuration contexts,
+but generally lead to bugs. Smaller variable scopes limit the risk of an 
+outer scope mis-using the variable.*
+
+*All primative values are immutable.*
+
+```javascript
+//function declaration:
+function functionName(arguments) {
+  function body;
+}
+
+//function expression:
+let functionName = function(arguments) {
+  function body;
+}
+
+//arrow function:
+let functionName = (arguments) => function body;
+```
+
+*A function expression has one key difference from a declaration: you can't invoke a function expression before it appears in your program.*
+
+&nbsp;
+### ***Flow Control***
+##### [Link to exercises](https://github.com/joshdeweese/javascript_intro/tree/master/05_Flow_Control)
+#### **Vocabulary**
+|term |definition |
+| --- | --- |
+|conditional       |a statement that checks a condition before executing |
+|comparison operator|<, >, <=, >=, ==, === |
+|strict equality operator |===  aka identity operator; returns true when the operands have the same type and value|
+|non-strict equality operator |==   aka loose equality operator; coerces values of different types to be the same type to compare|
+|strict inequality operator |!==  opposite of strict equality |
+|non-strict inequality operator |!=  opposite of non-strict equality |
+|logical operators |&& and two pipes; && means 'and operator' and the two pipes are the 'or operator'; the 'not operator' is ! and negates an expression|
+|short circuits |if there are multiple logical operator expressions, and one is false, the program doesn't check the other condition |
+|truthiness|JavaScript can coerce any value into a boolean value; it treats some values as false, everything else is true (see examples below) |
+|precedence |javascript evaluates operators in a specific order; parentheses override precedence |
+|ternary operator |quick way to write a concise i/else conditional|
+|switch statement |case statement; may be cleaner for long or complex conditional statements |
+
+
+#### **Notes**
+
+> *Example if statement:*
+```javascript
+if (x === 3) {
+    console.log("x is 3");
+} else if (x === 4) {
+    console.log("x is 4");
+} else {
+    console.log("x is not 3 or 4");
+}
+```
+> *Values that coerce to false:*
+- false
+- 0
+- an empty string
+- undefined
+- null
+- NaN
+
+> *Operator precedence*
+- Comparison ```<=, <,>, >=```
+- Equality ```==, !=```
+- Logical AND ```&&```
+- Logical OR ||
+
+> *Ternary operator*
+```javascript
+> 1 == 1 ? 'this is true': 'this is not true'
+= 'this is true'
+```
+
+> *Switch statement*
+```javascript
+switch (a) {
+    case 5:
+        console.log('a is 5');
+        break;
+    case 6:
+        console.log('a is 6');
+        break;
+    default:
+        console.log('a is neither 5, nor 6');
+        break;
+}
+```
+
+> *Short circuits*
+```javascript
+// Here, the expression stops at false
+false || (true && false) // false
+
+// Stops because a number is truthy
+(1 + 2) || true // 3
+
+// Because it is 'or,' it continues to evaluate
+// after 'true'
+true && (1 + 2) // 3
+
+```
+&nbsp;
+### ***Loops and Iterating***
+##### [Link to exercises](https://github.com/joshdeweese/javascript_intro/tree/master/06_Loops_Iterating)
+#### **Vocabulary**
+|term |definition |
+| --- | --- |
+|while loop  |uses the while keyword followed by a conditional expression in parentheses and a block |
+|increment/decrement operator|++, --; these increase/decrease operand by 1; not recommended  |
+|do / while loop |similar to while loop, but always executes the code int he block at least once |
+|for loop | same as while, but condensed syntax; good for iterating over arrays and other sequences |
+
+
+
+#### **Notes**
+
+> *While loop*
+```javascript
+let counter = 1;
+while (counter <= 10) {
+  console.log(counter);
+  counter += 1;
+}
+```
+
+> *Iterate over an array with a while loop: capitalized the list of names in a new list*
+
+```javascript
+let names = ['Chris', 'Kevin', 'Naveed', 'Pete', 'Victor'];
+let upperNames = [];
+let index = 0;
+
+while (index < names.length) {
+  let upperCaseName = names[index].toUpperCase();
+  upperNames.push(upperCaseName);
+  index += 1;
+}
+```
+
+> *Do/While loop*
+```javascript
+let answer;
+do {
+  answer = prompt("Do you want to do that again?");
+} while (answer === 'y');
+```
+
+> *For loop*
+```javascript
+let names = ['Chris', 'Kevin', 'Naveed', 'Pete', 'Victor'];
+let upperNames = [];
+
+for (let index = 0; index < names.length; index += 1) {
+  let upperCaseName = names[index].toUpperCase();
+  upperNames.push(upperCaseName);
+}
+
+// Same loop but with conditional:
+for (let index = 0; index < names.length; index += 1) {
+  if (names[index] === 'Naveed') {
+    continue;  
+}
+  let upperCaseName = names[index].toUpperCase();
+  upperNames.push(upperCaseName);
+}
+```
+
