@@ -17,7 +17,7 @@ array.forEach()
 array.length
 array.concat()
 array.splice()
-array.filter()
+array.filter(num => num === 100)
 array.reduce()
 array.includes()
 array.sort()
