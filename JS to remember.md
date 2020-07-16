@@ -23,6 +23,7 @@ array.includes()
 array.sort()
 array.slice()
 array.reverse()
+array.map()
 
 // Objects
 Object.create
