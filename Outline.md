@@ -1,6 +1,4 @@
-## Notes from [*Introduction to programming with JavaScript*](https://launchschool.com/books/javascript) by Launch School
 
-&nbsp;
 
 ### ***The Basics***
 ##### [Link to exercises](https://github.com/joshdeweese/javascript_intro/tree/master/01_the_basics)
